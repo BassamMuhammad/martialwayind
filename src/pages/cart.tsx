@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import { getCart } from "../utils"
 import { CartAndFavTable } from "../components/CartAndFavTable"
-import { Box } from "@material-ui/core"
+import { Box, Typography } from "@material-ui/core"
 
 const Cart: React.FC<any> = ({ data }) => {
   const cart = getCart()
@@ -18,6 +18,9 @@ const Cart: React.FC<any> = ({ data }) => {
   return (
     <Layout>
       <Box marginTop={5}>
+        <Box border={1}>
+          <Typography variant="h4">Cart</Typography>
+        </Box>
         <CartAndFavTable data={filteredData} />
       </Box>
     </Layout>
