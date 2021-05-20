@@ -5,3 +5,76 @@
  */
 
 // You can delete this file if you're not using it
+const path = require("path")
+const findCategories = category => {
+  if (category.toLowerCase() === "apperals")
+    return [
+      "Apperals",
+      "Bras",
+      "Leggings",
+      "Hoodies",
+      "Jackets",
+      "Joggers",
+      "Shorts",
+      "Rash Guards",
+      "T-Shirts",
+      "Tank Tops",
+      "Team Uniforms",
+      "Track Suits",
+    ]
+  else if (category.toLowerCase() === "uniforms")
+    return ["Uniforms", "BJJ", "Judo", "Karate", "Taekwondo"]
+  else return [category.replace(/\b\w/g, letter => letter.toUpperCase())]
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const products = await graphql(`
+    {
+      allContentfulProduct {
+        edges {
+          node {
+            name
+            category
+          }
+        }
+      }
+    }
+  `)
+  products.data.allContentfulProduct.edges.forEach(edge => {
+    createPage({
+      path: `products/${edge.node.name}`,
+      component: path.resolve(
+        "./src/pages/products/templates/product-temp.tsx"
+      ),
+      context: { slug: edge.node.name },
+      forceFullSync: true,
+    })
+  })
+  const categories = await graphql(`
+    {
+      allContentfulCategory {
+        edges {
+          node {
+            categories
+          }
+        }
+      }
+    }
+  `)
+  //   console.log(response)
+  categories.data.allContentfulCategory.edges[0].node.categories.forEach(
+    category => {
+      const slug = category.toLowerCase().replace(/ /g, "-")
+      const possibleCategories = findCategories(category)
+      createPage({
+        path: `products/${slug}`,
+        component: path.resolve(
+          "./src/pages/products/templates/category-temp.tsx"
+        ),
+        context: { possibleCategories: possibleCategories },
+        forceFullSync: true,
+      })
+    }
+  )
+}

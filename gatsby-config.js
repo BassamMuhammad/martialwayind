@@ -1,8 +1,11 @@
+require("dotenv").config()
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `MartialWay Industry`,
+    description: `Industry of martial arts items`,
+    mobile: `+92 300 6129343`,
+    email: `waqas@martialwayind.com`,
+    address: `31/193 Tehsil Bazaar, Sialkot 51310, Pakistan`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,6 +19,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -26,6 +30,14 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     `gatsby-plugin-gatsby-cloud`,
