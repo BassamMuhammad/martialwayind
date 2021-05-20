@@ -18,7 +18,7 @@ const CategoryTemp: React.FC<any> = ({ location, data }) => {
   return (
     <Layout>
       <Box marginTop={5} height="100vh">
-        <Box border={1}>
+        <Box display="flex" justifyContent="center" border={1}>
           <Typography variant="h4">{category}</Typography>
         </Box>
         <Box marginY={2}>

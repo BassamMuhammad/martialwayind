@@ -1,9 +1,12 @@
-import { CartType } from "./cartAndFavorites"
+export type CartType = { productName: string; quantity: number }[]
 const favStr = "favorite"
 const cartStr = "cart"
 
 export const getFavorite = (): string[] =>
   localStorage.getItem(favStr) ? JSON.parse(localStorage.getItem(favStr)!) : []
+
+export const setFavorite = (favorite: string[]) =>
+  localStorage.setItem(favStr, JSON.stringify(favorite))
 
 export const addRemoveFromFavorite = (name: string) => {
   name = name.toLowerCase()
@@ -15,13 +18,16 @@ export const addRemoveFromFavorite = (name: string) => {
   } else {
     favorite.push(name)
   }
-  localStorage.setItem(favStr, JSON.stringify(favorite))
+  setFavorite(favorite)
 }
 
 export const getCart = (): CartType =>
   localStorage.getItem(cartStr)
     ? JSON.parse(localStorage.getItem(cartStr)!)
     : []
+
+export const setCart = (cart: CartType) =>
+  localStorage.setItem(cartStr, JSON.stringify(cart))
 
 export const addRemoveFromCart = (
   name: string,
@@ -43,5 +49,5 @@ export const addRemoveFromCart = (
   } else {
     cart.push({ productName: name, quantity: quantity })
   }
-  localStorage.setItem(cartStr, JSON.stringify(cart))
+  setCart(cart)
 }
