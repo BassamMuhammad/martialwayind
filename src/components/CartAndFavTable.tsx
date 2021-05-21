@@ -2,8 +2,8 @@ import * as React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import "./CartAndFavTable.css"
 import { Box, Button, Typography } from "@material-ui/core"
-import { navigate } from "gatsby"
 import { addRemoveFromCart, CartType, setCart, setFavorite } from "../utils"
+import { Checkout } from "./Checkout"
 
 interface Props {
   data: { edge: any; quantity?: number }[]
@@ -134,14 +134,7 @@ export const CartAndFavTable: React.FC<Props> = ({ data, isCart }) => {
               <Box display="flex" flexDirection="column" marginTop={1}>
                 <Typography variant="h4">Total: ${total}</Typography>
                 <Box marginTop={1}>
-                  <Button
-                    variant="contained"
-                    onClick={() => navigate("/checkout")}
-                  >
-                    <Typography variant="button">
-                      Proceed to checkout
-                    </Typography>
-                  </Button>
+                  <Checkout />
                 </Box>
               </Box>
             )}

@@ -8,6 +8,7 @@
     "@material-ui/data-grid": "^4.0.0-alpha.29",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.3",
+    "@stripe/stripe-js": "^1.15.0",
     "@types/react-helmet": "^6.1.1",
     "dotenv": "^8.2.0",
     "fuse.js": "^6.4.6",
