@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import { getFavorite } from "../utils"
 import { CartAndFavTable } from "../components/CartAndFavTable"
 import { Box, Typography } from "@material-ui/core"
-
+import Seo from "../components/seo"
 const Favorite: React.FC<any> = ({ data }) => {
   const favorite = getFavorite()
   const filteredData = favorite.map(item => {
@@ -17,6 +17,7 @@ const Favorite: React.FC<any> = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title="Favorites" />
       <Box marginTop={5} height="100vh">
         <Box
           display="flex"

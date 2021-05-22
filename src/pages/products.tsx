@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { Box, Grid, Select } from "@material-ui/core"
 import { ProductComp } from "../components/ProductComp"
-
+import Seo from "../components/seo"
 const Products: React.FC<any> = ({ data }) => {
   const [sort, setSort] = React.useState("createdAt ASC")
   data.allContentfulProduct.edges.sort((a: any, b: any) => {
@@ -16,6 +16,7 @@ const Products: React.FC<any> = ({ data }) => {
   })
   return (
     <Layout>
+      <Seo title="Products" />
       <Box marginTop={5} height="100vh">
         <Box marginY={2}>
           <Select

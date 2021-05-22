@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import { getCart } from "../utils"
 import { CartAndFavTable } from "../components/CartAndFavTable"
 import { Box, Typography } from "@material-ui/core"
-
+import Seo from "../components/seo"
 const Cart: React.FC<any> = ({ data }) => {
   const cart = getCart()
   const filteredData = cart.map(item => {
@@ -17,6 +17,7 @@ const Cart: React.FC<any> = ({ data }) => {
   console.log(filteredData)
   return (
     <Layout>
+      <Seo title="Cart" />
       <Box marginTop={5} height="100vh">
         <Box
           display="flex"

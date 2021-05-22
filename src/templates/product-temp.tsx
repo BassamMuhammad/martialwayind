@@ -12,7 +12,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as React from "react"
 import Layout from "../components/Layout"
 import { addRemoveFromCart, addRemoveFromFavorite, getFavorite } from "../utils"
-
+import Seo from "../components/seo"
 const ProductTemp: React.FC<any> = ({ data }) => {
   const edge = data.allContentfulProduct.edges[0]
   const [cartValue, setCartValue] = React.useState(1)
@@ -20,6 +20,7 @@ const ProductTemp: React.FC<any> = ({ data }) => {
   const [fav, setFav] = React.useState(false)
   return (
     <Layout>
+      <Seo title={edge.node.name} />
       <Box marginTop={5}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { Box, Grid, Select, Typography } from "@material-ui/core"
 import { ProductComp } from "../components/ProductComp"
-
+import Seo from "../components/seo"
 const CategoryTemp: React.FC<any> = ({ location, data }) => {
   const category = location.pathname.replace(/\/.*\//, "").toUpperCase()
   const [sort, setSort] = React.useState("createdAt ASC")
@@ -17,6 +17,7 @@ const CategoryTemp: React.FC<any> = ({ location, data }) => {
   })
   return (
     <Layout>
+      <Seo title={category} />
       <Box marginTop={5} height="100vh">
         <Box display="flex" justifyContent="center" border={1}>
           <Typography variant="h4">{category}</Typography>
