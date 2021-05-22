@@ -30,7 +30,6 @@ export const BackToTopButton: React.FC<{ anchorId: string }> = ({
     ).querySelector("#" + anchorId)
 
     if (anchor) {
-      console.log({ anchor }, "#" + anchorId)
       anchor.scrollIntoView({ behavior: "smooth", block: "center" })
     }
   }

@@ -14,7 +14,6 @@ const Cart: React.FC<any> = ({ data }) => {
     )
     return { edge: edge, quantity: item.quantity }
   })
-  console.log(filteredData)
   return (
     <Layout>
       <Seo title="Cart" />

@@ -7,15 +7,13 @@ import Seo from "../components/seo"
 
 const CheckoutSuccess = () => {
   React.useEffect(() => {
-    getCart().forEach(item =>
+    getCart().forEach(item => {
       fetch(
-        `/.netlify/functions/editProduct?quantity=${item.quantity},entryId=${item.id}`
-      )
-        .then(res => alert(res.status))
-        .catch(e => console.log(e))
-    )
+        `/.netlify/functions/editProduct?quantity=${item.quantity}&entryId=${item.id}`
+      ).then(() => setCart([]))
+    })
   }, [])
-  setCart([])
+
   return (
     <Layout>
       <Seo title="Checkout" />

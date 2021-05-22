@@ -6,7 +6,7 @@ config()
 
 const handler: Handler = async event => {
   try {
-    const quantity = event.queryStringParameters?.quantity
+    const quantity = parseInt(event.queryStringParameters?.quantity!)
     const entryId = event.queryStringParameters?.entryId
     const client = createClient({
       accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN!,
