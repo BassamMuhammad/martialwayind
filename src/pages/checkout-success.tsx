@@ -16,7 +16,7 @@ const CheckoutSuccess = () => {
           `/.netlify/functions/editProduct?quantity=${item.quantity}&entryId=${item.id}`
         ).then(() => setCart([]))
       })
-      isDirectAccess = true
+      isDirectAccess = false
     }
   }, [])
 
