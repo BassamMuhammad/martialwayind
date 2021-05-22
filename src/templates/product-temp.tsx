@@ -1,21 +1,17 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import Layout from "../../../components/Layout"
 import {
   Box,
-  Grid,
   Button,
-  Typography,
+  Grid,
   IconButton,
   Tooltip,
+  Typography,
 } from "@material-ui/core"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import {
-  addRemoveFromCart,
-  addRemoveFromFavorite,
-  getFavorite,
-} from "../../../utils"
 import { Favorite, FavoriteBorderOutlined } from "@material-ui/icons"
+import { graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import * as React from "react"
+import Layout from "../components/Layout"
+import { addRemoveFromCart, addRemoveFromFavorite, getFavorite } from "../utils"
 
 const ProductTemp: React.FC<any> = ({ data }) => {
   const edge = data.allContentfulProduct.edges[0]

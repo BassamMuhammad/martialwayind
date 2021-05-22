@@ -1,8 +1,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Layout from "../../../components/Layout"
+import Layout from "../components/Layout"
 import { Box, Grid, Select, Typography } from "@material-ui/core"
-import { ProductComp } from "../../../components/ProductComp"
+import { ProductComp } from "../components/ProductComp"
 
 const CategoryTemp: React.FC<any> = ({ location, data }) => {
   const category = location.pathname.replace(/\/.*\//, "").toUpperCase()

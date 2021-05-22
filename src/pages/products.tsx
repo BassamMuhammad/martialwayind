@@ -1,8 +1,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import Layout from "../../components/Layout"
+import Layout from "../components/Layout"
 import { Box, Grid, Select } from "@material-ui/core"
-import { ProductComp } from "../../components/ProductComp"
+import { ProductComp } from "../components/ProductComp"
 
 const Products: React.FC<any> = ({ data }) => {
   const [sort, setSort] = React.useState("createdAt ASC")

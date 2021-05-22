@@ -35,18 +35,16 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             name
-            category
           }
         }
       }
     }
   `)
   products.data.allContentfulProduct.edges.forEach(edge => {
+    const slug = edge.node.name.toLowerCase().replace(/ /g, "-")
     createPage({
-      path: `products/${edge.node.name}`,
-      component: path.resolve(
-        "./src/pages/products/templates/product-temp.tsx"
-      ),
+      path: `products/${slug}`,
+      component: path.resolve("./src/templates/product-temp.tsx"),
       context: { slug: edge.node.name },
       forceFullSync: true,
     })
@@ -62,16 +60,13 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  //   console.log(response)
   categories.data.allContentfulCategory.edges[0].node.categories.forEach(
     category => {
       const slug = category.toLowerCase().replace(/ /g, "-")
       const possibleCategories = findCategories(category)
       createPage({
         path: `products/${slug}`,
-        component: path.resolve(
-          "./src/pages/products/templates/category-temp.tsx"
-        ),
+        component: path.resolve("./src/templates/category-temp.tsx"),
         context: { possibleCategories: possibleCategories },
         forceFullSync: true,
       })
