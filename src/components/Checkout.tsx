@@ -23,8 +23,8 @@ export const Checkout = () => {
         { price: "price_1ItcQSKWj860r14MBvxsuBeq", quantity: 2 },
         { price: "price_1ItcQzKWj860r14MacOkGedW", quantity: 1 },
       ],
-      successUrl: `http://localhost:8000/checkout-success/`,
-      cancelUrl: `http://localhost:8000/cart/`,
+      successUrl: `https://martialwayind.netlify.app/checkout-success/`,
+      cancelUrl: `https://martialwayind.netlify.app/cart/`,
     })
     if (error) {
       console.warn("Error:", error)
