@@ -7,14 +7,16 @@ import Seo from "../components/seo"
 import { navigate } from "gatsby"
 
 const CheckoutSuccess = () => {
+  var isDirectAccess = true
   React.useEffect(() => {
     //prevent direct access
-    if (document.referrer.length !== 0) {
+    if (typeof window !== "undefined" && document.referrer.length !== 0) {
       getCart().forEach(item => {
         fetch(
           `/.netlify/functions/editProduct?quantity=${item.quantity}&entryId=${item.id}`
         ).then(() => setCart([]))
       })
+      isDirectAccess = true
     }
   }, [])
 
@@ -28,7 +30,7 @@ const CheckoutSuccess = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {document.referrer.length !== 0 ? (
+        {!isDirectAccess ? (
           <Typography>
             Order placed successfully. <br /> Your order id is: {v4()} <br />
             Please save it somewhere for reference
