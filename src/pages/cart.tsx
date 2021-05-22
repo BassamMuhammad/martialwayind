@@ -10,11 +10,11 @@ const Cart: React.FC<any> = ({ data }) => {
   const cart = getCart()
   const filteredData = cart.map(item => {
     const edge = data.allContentfulProduct.edges.find(
-      (edge: any) => edge.node.name === item.productName
+      (edge: any) => edge.node.contentful_id === item.id
     )
     return { edge: edge, quantity: item.quantity }
   })
-
+  console.log(filteredData)
   return (
     <Layout>
       <Box marginTop={5} height="100vh">
@@ -40,6 +40,7 @@ export const query = graphql`
         node {
           category
           name
+          contentful_id
           price
           image {
             gatsbyImageData(height: 50)

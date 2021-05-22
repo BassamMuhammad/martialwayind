@@ -31,7 +31,9 @@ export const CartAndFavTable: React.FC<Props> = ({ data, isCart }) => {
       stateData.forEach((item, index) => {
         if (secChecks[index]) temp.push(item)
       })
-      temp.forEach(item => addRemoveFromCart(item.edge.node.name, 1, true))
+      temp.forEach(item =>
+        addRemoveFromCart(item.edge.node.contentful_id, 1, true)
+      )
       alert("Added to Cart")
       setMainCheck(false)
       setSecChecks(secChecksinitiallizor)
@@ -43,14 +45,14 @@ export const CartAndFavTable: React.FC<Props> = ({ data, isCart }) => {
         let cart: CartType = []
         temp.forEach(item =>
           cart.push({
-            productName: item.edge.node.name,
+            id: item.edge.node.contentful_id,
             quantity: item.quantity!,
           })
         )
         setCart(cart)
       } else {
         let favorite: string[] = []
-        temp.forEach(item => favorite.push(item.edge.node.name))
+        temp.forEach(item => favorite.push(item.edge.node.contentful_id))
         setFavorite(favorite)
       }
       setStateData(temp)

@@ -23,7 +23,7 @@ export const Checkout = () => {
         { price: "price_1ItcQSKWj860r14MBvxsuBeq", quantity: 2 },
         { price: "price_1ItcQzKWj860r14MacOkGedW", quantity: 1 },
       ],
-      successUrl: `http://localhost:8000/products/`,
+      successUrl: `http://localhost:8000/checkout-success/`,
       cancelUrl: `http://localhost:8000/cart/`,
     })
     if (error) {

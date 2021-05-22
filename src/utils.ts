@@ -1,4 +1,4 @@
-export type CartType = { productName: string; quantity: number }[]
+export type CartType = { id: string; quantity: number }[]
 const favStr = "favorite"
 const cartStr = "cart"
 
@@ -8,15 +8,14 @@ export const getFavorite = (): string[] =>
 export const setFavorite = (favorite: string[]) =>
   localStorage.setItem(favStr, JSON.stringify(favorite))
 
-export const addRemoveFromFavorite = (name: string) => {
-  name = name.toLowerCase()
+export const addRemoveFromFavorite = (id: string) => {
   const favorite = getFavorite()
   const index =
-    favorite.length > 0 ? favorite.findIndex(value => value === name) : -1
+    favorite.length > 0 ? favorite.findIndex(value => value === id) : -1
   if (index >= 0) {
     favorite.splice(index, 1)
   } else {
-    favorite.push(name)
+    favorite.push(id)
   }
   setFavorite(favorite)
 }
@@ -30,16 +29,13 @@ export const setCart = (cart: CartType) =>
   localStorage.setItem(cartStr, JSON.stringify(cart))
 
 export const addRemoveFromCart = (
-  name: string,
+  id: string,
   quantity: number,
   add?: boolean
 ) => {
-  name = name.toLowerCase()
   const cart = getCart()
   const index =
-    cart.length > 0
-      ? cart.findIndex(cartObj => cartObj.productName === name)
-      : -1
+    cart.length > 0 ? cart.findIndex(cartObj => cartObj.id === id) : -1
   if (index >= 0) {
     if (add) {
       cart[index].quantity += quantity
@@ -47,7 +43,7 @@ export const addRemoveFromCart = (
       cart.splice(index, 1)
     }
   } else {
-    cart.push({ productName: name, quantity: quantity })
+    cart.push({ id, quantity })
   }
   setCart(cart)
 }

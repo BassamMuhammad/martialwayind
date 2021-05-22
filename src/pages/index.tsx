@@ -31,18 +31,24 @@ const IndexPage: React.FC<any> = ({ data }) => {
               stopOnHover
               showThumbs={false}
             >
-              <StaticImage
-                src="https://source.unsplash.com/random"
-                alt="logo"
-              />
-              <StaticImage
-                src="https://source.unsplash.com/random"
-                alt="logo"
-              />
-              <StaticImage
-                src="https://source.unsplash.com/random"
-                alt="logo"
-              />
+              <Box height="33%">
+                <StaticImage
+                  src="https://source.unsplash.com/random/1000x500"
+                  alt="logo"
+                />
+              </Box>
+              <Box height="33%">
+                <StaticImage
+                  src="https://source.unsplash.com/random/1000x500"
+                  alt="logo"
+                />
+              </Box>
+              <Box height="33%">
+                <StaticImage
+                  src="https://source.unsplash.com/random/1000x500"
+                  alt="logo"
+                />
+              </Box>
             </Carousel>
           </Grid>
           <Grid item>
@@ -89,6 +95,7 @@ export const data = graphql`
           category
           name
           price
+          contentful_id
           image {
             gatsbyImageData(
               placeholder: TRACED_SVG

@@ -81,7 +81,7 @@ const ProductTemp: React.FC<any> = ({ data }) => {
                   <IconButton
                     onClick={e => {
                       e.stopPropagation()
-                      addRemoveFromFavorite(edge.node.name)
+                      addRemoveFromFavorite(edge.node.contentful_id)
                       setFav(!fav)
                     }}
                   >
@@ -119,7 +119,11 @@ const ProductTemp: React.FC<any> = ({ data }) => {
                     <Button
                       variant="outlined"
                       onClick={() =>
-                        addRemoveFromCart(edge.node.name, cartValue, true)
+                        addRemoveFromCart(
+                          edge.node.contentful_id,
+                          cartValue,
+                          true
+                        )
                       }
                     >
                       Add to Cart
@@ -142,6 +146,7 @@ export const query = graphql`
         node {
           category
           name
+          contentful_id
           price
           image {
             gatsbyImageData

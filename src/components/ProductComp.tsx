@@ -37,11 +37,11 @@ export const ProductComp: React.FC<any> = ({ node }) => {
             <IconButton
               onClick={e => {
                 e.stopPropagation()
-                addRemoveFromFavorite(node.name)
+                addRemoveFromFavorite(node.contentful_id)
                 setCartAndFav(!cartAndFav)
               }}
             >
-              {getFavorite().includes(node.name) ? (
+              {getFavorite().includes(node.contentful_id) ? (
                 <Tooltip title="Remove from Favorites">
                   <Favorite color="error" />
                 </Tooltip>
@@ -56,12 +56,12 @@ export const ProductComp: React.FC<any> = ({ node }) => {
             <IconButton
               onClick={e => {
                 e.stopPropagation()
-                addRemoveFromCart(node.name, 1)
+                addRemoveFromCart(node.contentful_id, 1)
                 setCartAndFav(!cartAndFav)
               }}
             >
               {getCart().findIndex(
-                cartObj => cartObj.productName === node.name
+                cartObj => cartObj.id === node.contentful_id
               ) >= 0 ? (
                 <Tooltip title="Remove from Cart">
                   <RemoveShoppingCartOutlined color="error" />

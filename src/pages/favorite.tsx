@@ -10,7 +10,7 @@ const Favorite: React.FC<any> = ({ data }) => {
   const favorite = getFavorite()
   const filteredData = favorite.map(item => {
     const edge = data.allContentfulProduct.edges.find(
-      (edge: any) => edge.node.name === item
+      (edge: any) => edge.node.contentful_id === item
     )
     return { edge: edge }
   })
@@ -40,6 +40,7 @@ export const query = graphql`
         node {
           category
           name
+          contentful_id
           price
           image {
             gatsbyImageData(height: 50)
