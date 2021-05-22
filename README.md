@@ -1,1 +1,1 @@
-Site at [https://martialwayind.netlify.app/]
+Site at https://martialwayind.netlify.app/
