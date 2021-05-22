@@ -3,10 +3,16 @@ const favStr = "favorite"
 const cartStr = "cart"
 
 export const getFavorite = (): string[] =>
-  localStorage.getItem(favStr) ? JSON.parse(localStorage.getItem(favStr)!) : []
+  typeof window !== `undefined`
+    ? localStorage.getItem(favStr)
+      ? JSON.parse(localStorage.getItem(favStr)!)
+      : []
+    : []
 
-export const setFavorite = (favorite: string[]) =>
-  localStorage.setItem(favStr, JSON.stringify(favorite))
+export const setFavorite = (favorite: string[]) => {
+  if (typeof window !== `undefined`)
+    localStorage.setItem(favStr, JSON.stringify(favorite))
+}
 
 export const addRemoveFromFavorite = (id: string) => {
   const favorite = getFavorite()
@@ -21,12 +27,15 @@ export const addRemoveFromFavorite = (id: string) => {
 }
 
 export const getCart = (): CartType =>
-  localStorage.getItem(cartStr)
-    ? JSON.parse(localStorage.getItem(cartStr)!)
+  typeof window !== `undefined`
+    ? localStorage.getItem(cartStr)
+      ? JSON.parse(localStorage.getItem(cartStr)!)
+      : []
     : []
-
-export const setCart = (cart: CartType) =>
-  localStorage.setItem(cartStr, JSON.stringify(cart))
+export const setCart = (cart: CartType) => {
+  if (typeof window !== `undefined`)
+    localStorage.setItem(cartStr, JSON.stringify(cart))
+}
 
 export const addRemoveFromCart = (
   id: string,
