@@ -2,7 +2,7 @@ import * as React from "react"
 import Layout from "../components/Layout"
 
 import { graphql } from "gatsby"
-import { getCart } from "../utils"
+import { getCart, isBrowser } from "../utils"
 import { CartAndFavTable } from "../components/CartAndFavTable"
 import { Box, Typography } from "@material-ui/core"
 import Seo from "../components/seo"
@@ -14,6 +14,7 @@ const Cart: React.FC<any> = ({ data }) => {
     )
     return { edge: edge, quantity: item.quantity }
   })
+  isBrowser() && sessionStorage.removeItem("checkout")
   return (
     <Layout>
       <Seo title="Cart" />

@@ -2,24 +2,26 @@ import { Box, Button, Typography } from "@material-ui/core"
 import * as React from "react"
 import Layout from "../components/Layout"
 import { v4 } from "uuid"
-import { getCart, setCart } from "../utils"
+import { isBrowser, getCart, setCart } from "../utils"
 import Seo from "../components/seo"
 import { navigate } from "gatsby"
 
 const CheckoutSuccess = () => {
-  var isDirectAccess = true
+  const isFromCheckout = isBrowser() && !!sessionStorage.getItem("checkout")
   React.useEffect(() => {
     //prevent direct access
-    if (typeof window !== "undefined" && document.referrer.length !== 0) {
+    if (isFromCheckout) {
+      console.log("use effect")
       getCart().forEach(item => {
         fetch(
           `/.netlify/functions/editProduct?quantity=${item.quantity}&entryId=${item.id}`
         ).then(() => setCart([]))
       })
-      isDirectAccess = false
     }
   }, [])
-
+  if (isFromCheckout) {
+    isBrowser() && sessionStorage.removeItem("checkout")
+  }
   return (
     <Layout>
       <Seo title="Checkout" />
@@ -30,7 +32,7 @@ const CheckoutSuccess = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {!isDirectAccess ? (
+        {isFromCheckout ? (
           <Typography>
             Order placed successfully. <br /> Your order id is: {v4()} <br />
             Please save it somewhere for reference

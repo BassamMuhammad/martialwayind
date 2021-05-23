@@ -1,6 +1,7 @@
 import * as React from "react"
 import { loadStripe, Stripe } from "@stripe/stripe-js"
 import { Button, Typography } from "@material-ui/core"
+import { isBrowser } from "../utils"
 
 let stripePromise: Promise<Stripe | null>
 const getStripe = () => {
@@ -23,7 +24,7 @@ export const Checkout = () => {
         { price: "price_1ItcQSKWj860r14MBvxsuBeq", quantity: 2 },
         { price: "price_1ItcQzKWj860r14MacOkGedW", quantity: 1 },
       ],
-      successUrl: `https://martialwayind.netlify.app/checkout-success/`,
+      successUrl: `http://martialwayind.netlify.app/checkout-success/`,
       cancelUrl: `https://martialwayind.netlify.app/cart/`,
     })
     if (error) {
@@ -32,7 +33,14 @@ export const Checkout = () => {
     }
   }
   return (
-    <Button variant="contained" onClick={redirectToCheckout} disabled={loading}>
+    <Button
+      variant="contained"
+      onClick={e => {
+        isBrowser() && sessionStorage.setItem("checkout", "1")
+        redirectToCheckout(e)
+      }}
+      disabled={loading}
+    >
       <Typography variant="button">Proceed to checkout</Typography>
     </Button>
   )
