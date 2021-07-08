@@ -3,9 +3,8 @@ module.exports = {
   siteMetadata: {
     title: `MartialWay Industry`,
     description: `Industry of martial arts items`,
-    mobile: `+92 300 6129343`,
-    email: `waqas@martialwayind.com`,
-    address: `31/193 Tehsil Bazaar, Sialkot 51310, Pakistan`,
+    mobile: `+12345678910`,
+    email: `anonymous@martialwayind.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
