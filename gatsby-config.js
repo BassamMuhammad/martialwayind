@@ -5,6 +5,7 @@ module.exports = {
     description: `Industry of martial arts items`,
     mobile: `+12345678910`,
     email: `anonymous@martialwayind.com`,
+    address: `lorem ipsum dolor emmet`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
