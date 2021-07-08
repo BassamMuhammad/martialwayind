@@ -57,6 +57,7 @@ export const data = graphql`
           name
           price
           createdAt(difference: "2021-01-01")
+          contentful_id
           image {
             gatsbyImageData(
               placeholder: TRACED_SVG
